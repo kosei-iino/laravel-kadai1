@@ -3,7 +3,6 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\RegisterController;
-use App\Http\Controllers\HomeController;
 
 /*
 |--------------------------------------------------------------------------
@@ -15,6 +14,9 @@ use App\Http\Controllers\HomeController;
 | contains the "web" middleware group. Now create something great!
 |
 */
-Route::get('/', [LoginController::class, 'showPage']);
-Route::get('/register', [RegisterController::class, 'showPage']);
+Route::resource('/', LoginController::class)->only([
+    'index'
+]);
+Route::resource('/register', RegisterController::class)->only([
+    'index']);
 Route::post('/register', [RegisterController::class, 'register']);

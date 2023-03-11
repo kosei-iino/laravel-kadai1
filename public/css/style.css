@@ -10,8 +10,6 @@ header {
     margin-bottom: 10px;
 }
 
-.container {}
-
 .change-login {
     display: flex;
     justify-content: space-between;
