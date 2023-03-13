@@ -1,6 +1,8 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\LoginController;
+use App\Http\Controllers\RegisterController;
 
 /*
 |--------------------------------------------------------------------------
@@ -12,10 +14,9 @@ use Illuminate\Support\Facades\Route;
 | contains the "web" middleware group. Now create something great!
 |
 */
-
-Route::get('/', function () {
-    return view('login');
-});
-Route::get('/register', function () {
-return view('register');
-});
+Route::resource('/', LoginController::class)->only([
+    'index'
+]);
+Route::resource('/register', RegisterController::class)->only([
+    'index']);
+Route::post('/register', [RegisterController::class, 'register']);
